@@ -6,20 +6,20 @@ import LoginControl from '../components/LoginControl'
 import LogoutControl from '../components/LogoutControl'
 
 const Header: React.FC = () => {
-  const router = useRouter();
-  const isActive: (pathname: string) => boolean = (pathname) =>
-    router.pathname === pathname;
+    const router = useRouter();
+    const isActive: (pathname: string) => boolean = (pathname) =>
+        router.pathname === pathname;
 
-  const [session, loading] = useSession();
+    const [session, loading] = useSession();
 
-  let left = (
-    <div className="left">
-      <Link href="/">
-        <a className="bold" data-active={isActive("/")}>
-          Feed
+    let left = (
+        <div className="left">
+            <Link href="/">
+                <a className="bold" data-active={isActive("/")}>
+                    Feed
         </a>
-      </Link>
-      <style jsx>{`
+            </Link>
+            <style jsx>{`
         .bold {
           font-weight: bold;
         }
@@ -35,20 +35,20 @@ const Header: React.FC = () => {
           margin-left: 1rem;
         }
       `}</style>
-    </div>
-  );
+        </div>
+    );
 
-  let right = null;
+    let right = null;
 
-  if (loading) {
-    left = (
-      <div className="left">
-        <Link href="/">
-          <a className="bold" data-active={isActive("/")}>
-            Feed
+    if (loading) {
+        left = (
+            <div className="left">
+                <Link href="/">
+                    <a className="bold" data-active={isActive("/")}>
+                        Feed
           </a>
-        </Link>
-        <style jsx>{`
+                </Link>
+                <style jsx>{`
           .bold {
             font-weight: bold;
           }
@@ -64,37 +64,37 @@ const Header: React.FC = () => {
             margin-left: 1rem;
           }
         `}</style>
-      </div>
-    );
-    right = (
-      <div className="right">
-        <p>Validating session ...</p>
-        <style jsx>{`
+            </div>
+        );
+        right = (
+            <div className="right">
+                <p>Validating session ...</p>
+                <style jsx>{`
           .right {
             margin-left: auto;
           }
         `}</style>
-      </div>
-    );
-  }
+            </div>
+        );
+    }
 
-  if (!session) {
-    right = ( <LoginControl isActive={isActive}/>
-    );
-  }
+    if (!session) {
+        right = (<LoginControl isActive={isActive} />
+        );
+    }
 
-  if (session) {
-    left = (
-      <div className="left">
-        <Link href="/">
-          <a className="bold" data-active={isActive("/")}>
-            Feed
+    if (session) {
+        left = (
+            <div className="left">
+                <Link href="/">
+                    <a className="bold" data-active={isActive("/")}>
+                        Feed
           </a>
-        </Link>
-        <Link href="/drafts">
-          <a data-active={isActive("/drafts")}>My drafts</a>
-        </Link>
-        <style jsx>{`
+                </Link>
+                <Link href="/drafts">
+                    <a data-active={isActive("/drafts")}>My drafts</a>
+                </Link>
+                <style jsx>{`
           .bold {
             font-weight: bold;
           }
@@ -110,25 +110,25 @@ const Header: React.FC = () => {
             margin-left: 1rem;
           }
         `}</style>
-      </div>
-    );
-    right = (<LogoutControl signout={signOut} session={session}/>
-    );
-  }
+            </div>
+        );
+        right = (<LogoutControl signout={signOut} session={session} />
+        );
+    }
 
-  return (
-    <nav>
-      {left}
-      {right}
-      <style jsx>{`
+    return (
+        <nav>
+            {left}
+            {right}
+            <style jsx>{`
         nav {
           display: flex;
           padding: 2rem;
           align-items: center;
         }
       `}</style>
-    </nav>
-  );
+        </nav>
+    );
 };
 
 export default Header;
