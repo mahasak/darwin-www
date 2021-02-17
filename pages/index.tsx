@@ -1,6 +1,22 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Layout from '../components/Layout'
+import { GetStaticProps } from "next";
+import { signIn, signOut, useSession } from "next-auth/client";
+import prisma from '../lib/prisma'
+export const getServerSideProps = async ({req}) => {
+  const token = req.headers.AUTHORIZATION
+  //const userId = await getUserId(token)
+  /*
+  const posts = await prisma.post.findMany({
+    where: {
+      author: { id: userId },
+    },
+  })
+  
+  */
+ return { props: {  } }
+}
 
 function HomeApp() {
   return (
@@ -61,6 +77,7 @@ function HomeApp() {
 }
 
 export default function Home() {
+  const [session, loading] = useSession();
   return (
     <Layout>
       <HomeApp/>
