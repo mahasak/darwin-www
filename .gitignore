@@ -21,6 +21,7 @@
 
 # dotenv
 .env
+prisma/dev.db
 
 # debug
 npm-debug.log*
