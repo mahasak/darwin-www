@@ -5,11 +5,6 @@ import Layout from '../components/Layout'
 function HomeApp() {
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Darwin</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <main className={styles.main}>
         <h1 className={styles.title}>
           Welcome to the <a href="https://nextjs.org">Next.js!</a>
