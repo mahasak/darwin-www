@@ -8,9 +8,13 @@
     "start": "next start"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^1.3.0",
+    "@auth0/nextjs-auth0": "^1.0.0",
     "@types/dotenv": "^8.2.0",
+    "@types/oauth2-server": "^3.0.12",
     "dotenv": "^8.2.0",
     "next": "10.0.7",
+    "oauth2-server": "^3.1.1",
     "ra-data-json-server": "^3.12.2",
     "react": "17.0.1",
     "react-admin": "^3.12.2",
