@@ -1,17 +1,18 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import Layout from '../components/Layout'
 
-export default function Home() {
+function HomeApp() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Darwin</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Welcome to the <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
         <p className={styles.description}>
@@ -61,5 +62,13 @@ export default function Home() {
         </a>
       </footer>
     </div>
+  )
+}
+
+export default function Home() {
+  return (
+    <Layout>
+      <HomeApp/>
+    </Layout>
   )
 }
