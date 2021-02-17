@@ -2,6 +2,8 @@ import React from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { signOut, useSession } from "next-auth/client";
+import LoginControl from '../components/LoginControl'
+import LogoutControl from '../components/LogoutControl'
 
 const Header: React.FC = () => {
   const router = useRouter();
@@ -77,30 +79,7 @@ const Header: React.FC = () => {
   }
 
   if (!session) {
-    right = (
-      <div className="right">
-        <Link href="/api/auth/signin">
-          <a data-active={isActive("/signup")}>Log in</a>
-        </Link>
-        <style jsx>{`
-          a {
-            text-decoration: none;
-            color: #000;
-            display: inline-block;
-          }
-          a + a {
-            margin-left: 1rem;
-          }
-          .right {
-            margin-left: auto;
-          }
-          .right a {
-            border: 1px solid black;
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-          }
-        `}</style>
-      </div>
+    right = ( <LoginControl isActive={isActive}/>
     );
   }
 
@@ -133,46 +112,7 @@ const Header: React.FC = () => {
         `}</style>
       </div>
     );
-    right = (
-      <div className="right">
-        <p>
-          {session.user.name} ({session.user.email})
-        </p>
-        <Link href="/create">
-          <button>
-            <a>New post</a>
-          </button>
-        </Link>
-        <button onClick={() => signOut()}>
-          <a>Log out</a>
-        </button>
-        <style jsx>{`
-          a {
-            text-decoration: none;
-            color: #000;
-            display: inline-block;
-          }
-          p {
-            display: inline-block;
-            font-size: 13px;
-            padding-right: 1rem;
-          }
-          a + a {
-            margin-left: 1rem;
-          }
-          .right {
-            margin-left: auto;
-          }
-          .right a {
-            border: 1px solid black;
-            padding: 0.5rem 1rem;
-            border-radius: 3px;
-          }
-          button {
-            border: none;
-          }
-        `}</style>
-      </div>
+    right = (<LogoutControl signout={signOut} session={session}/>
     );
   }
 
