@@ -1,14 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import { useUser } from '@auth0/nextjs-auth0';
 
 export default function Home() {
-  const { user, error, isLoading } = useUser();
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>{error.message}</div>;
-
-  if(user) {
   return (
     <div className={styles.container}>
       <Head>
@@ -69,6 +62,4 @@ export default function Home() {
       </footer>
     </div>
   )
-  }
-  return <a href="/api/auth/login">Login</a>
 }
