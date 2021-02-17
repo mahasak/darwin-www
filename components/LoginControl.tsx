@@ -1,5 +1,7 @@
 import React, { ReactNode } from "react";
+
 import Link from "next/link";
+import { signIn, useSession } from "next-auth/client";
 
 type Props = {
     isActive: (pathname: string) => boolean
