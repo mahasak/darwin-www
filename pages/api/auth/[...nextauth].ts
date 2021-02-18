@@ -14,6 +14,10 @@ const options = {
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
     }),
+    Providers.Facebook({
+      clientId: process.env.FACEBOOK_CLIENT_ID,
+      clientSecret: process.env.FACEBOOK_CLIENT_SECRET
+    }),
     Providers.Email({
       server: {
         host: process.env.SMTP_HOST,
