@@ -4,6 +4,7 @@ import Layout from '../components/Layout'
 import { GetStaticProps } from "next";
 import { signIn, signOut, useSession } from "next-auth/client";
 import prisma from '../lib/prisma'
+import TopBar from '../components/TopBar'
 export const getServerSideProps = async ({req}) => {
   const token = req.headers.AUTHORIZATION
   //const userId = await getUserId(token)
@@ -80,6 +81,7 @@ export default function Home() {
   const [session, loading] = useSession();
   return (
     <Layout>
+      <TopBar />
       <HomeApp/>
     </Layout>
   )
