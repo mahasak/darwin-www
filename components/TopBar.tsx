@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import Link   from 'next/link';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
 import {
@@ -25,10 +25,12 @@ const TopBar = () => {
       elevation={0}
     >
       <Toolbar className={classes.toolbar}>
-        <Logo />
+        <Link href="/">
+          <a><Logo /></a>
+        </Link>
       </Toolbar>
     </AppBar>
-  )
+  );
 };
 
 export default TopBar;
