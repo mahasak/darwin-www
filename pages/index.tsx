@@ -4,14 +4,10 @@ import Layout from '../components/Layout'
 import Logo from '../components/Logo'
 import { GetStaticProps } from "next";
 import { signIn, signOut, useSession } from "next-auth/client";
-import prisma from '../lib/prisma'
-import TopBar from '../components/TopBar'
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -112,10 +108,6 @@ const useStyles = makeStyles((theme: Theme) =>
     drawerContainer: {
       overflow: 'auto',
     },
-    content: {
-      flexGrow: 1,
-      padding: theme.spacing(3),
-    },
   }),
 );
 
@@ -125,7 +117,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <AppBar position="fixed" className={classes.appBar}>
+      <AppBar className={classes.appBar}>
         <Toolbar>
         <Link href="/">
             <a><Logo /></a>
