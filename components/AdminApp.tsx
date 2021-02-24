@@ -1,18 +1,31 @@
-import React, { useState } from 'react';
-import Content from '../components/Content'
-import Header from '../components/Header'
-import Navigator from '../components/Navigator'
-import Typography from '@material-ui/core/Typography';
+import React from 'react';
 import {
   createMuiTheme,
+  createStyles,
   ThemeProvider,
-  makeStyles,
-  withStyles
+  withStyles,
+  WithStyles,
 } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { useSession } from "next-auth/client";
 import Hidden from '@material-ui/core/Hidden';
+import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import Navigator from './Navigator';
+import Content from './Content';
+import Header from './Header';
+
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
 
 let theme = createMuiTheme({
   palette: {
@@ -125,7 +138,8 @@ theme = {
 };
 
 const drawerWidth = 256;
-const useStyles = makeStyles({
+
+const styles = createStyles({
   root: {
     display: 'flex',
     minHeight: '100vh',
@@ -152,29 +166,11 @@ const useStyles = makeStyles({
   },
 });
 
-export const getServerSideProps = async ({req}) => {
-  //const token = req.headers.AUTHORIZATION
- return { props: {  } }
-}
+export interface PaperbaseProps extends WithStyles<typeof styles> {}
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-
-const Home = () => {
-  const [session, loading] = useSession();
-  const classes = useStyles();
-  const [mobileOpen, setMobileOpen] = useState(false);
+function Paperbase(props: PaperbaseProps) {
+  const { classes } = props;
+  const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -208,7 +204,7 @@ const Home = () => {
         </div>
       </div>
     </ThemeProvider>
-  )
+  );
 }
 
-export default Home
+export default withStyles(styles)(Paperbase);
