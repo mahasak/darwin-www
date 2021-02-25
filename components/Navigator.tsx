@@ -83,7 +83,7 @@ const styles = (theme: Theme) =>
     },
   });
 
-export interface NavigatorProps extends Omit<DrawerProps, 'classes'>, WithStyles<typeof styles> {}
+export interface NavigatorProps extends Omit<DrawerProps, 'classes'>, WithStyles<typeof styles> { }
 
 function Navigator(props: NavigatorProps) {
   const { classes, ...other } = props;

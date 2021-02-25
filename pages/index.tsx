@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import Content from '../components/Content'
+import Copyright from '../components/Copyright'
 import Header from '../components/Header'
 import Navigator from '../components/Navigator'
-import Typography from '@material-ui/core/Typography';
 import {
   createMuiTheme,
   ThemeProvider,
@@ -12,7 +12,6 @@ import {
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { useSession } from "next-auth/client";
 import Hidden from '@material-ui/core/Hidden';
-import Link from '@material-ui/core/Link';
 import theme from '../lib/theme'
 const drawerWidth = 256;
 const useStyles = makeStyles({
@@ -42,24 +41,10 @@ const useStyles = makeStyles({
   },
 });
 
-export const getServerSideProps = async ({req}) => {
-  //const token = req.headers.AUTHORIZATION
- return { props: {  } }
+export const getServerSideProps = async ({ req }) => {
+  const token = req.headers.AUTHORIZATION ?? ""
+  return { props: {} }
 }
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
 
 const Home = () => {
   const [session, loading] = useSession();
@@ -93,7 +78,7 @@ const Home = () => {
             <Content />
           </main>
           <footer className={classes.footer}>
-            <Copyright />
+            <Copyright text="Test" link="http://localhost:3000" />
           </footer>
         </div>
       </div>

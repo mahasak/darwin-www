@@ -36,7 +36,7 @@ const styles = (theme: Theme) =>
     },
   });
 
-export interface ContentProps extends WithStyles<typeof styles> {}
+export interface ContentProps extends WithStyles<typeof styles> { }
 
 function Content(props: ContentProps) {
   const { classes } = props;

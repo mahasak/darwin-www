@@ -166,7 +166,7 @@ const styles = createStyles({
   },
 });
 
-export interface PaperbaseProps extends WithStyles<typeof styles> {}
+export interface PaperbaseProps extends WithStyles<typeof styles> { }
 
 function Paperbase(props: PaperbaseProps) {
   const { classes } = props;
