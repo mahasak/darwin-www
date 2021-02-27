@@ -9,6 +9,16 @@ import {
   makeStyles,
   withStyles
 } from '@material-ui/core/styles';
+import HomeIcon from '@material-ui/icons/Home';
+import PeopleIcon from '@material-ui/icons/People';
+import DnsRoundedIcon from '@material-ui/icons/DnsRounded';
+import PermMediaOutlinedIcon from '@material-ui/icons/PhotoSizeSelectActual';
+import PublicIcon from '@material-ui/icons/Public';
+import SettingsEthernetIcon from '@material-ui/icons/SettingsEthernet';
+import SettingsInputComponentIcon from '@material-ui/icons/SettingsInputComponent';
+import TimerIcon from '@material-ui/icons/Timer';
+import SettingsIcon from '@material-ui/icons/Settings';
+import PhonelinkSetupIcon from '@material-ui/icons/PhonelinkSetup';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { useSession } from "next-auth/client";
 import Hidden from '@material-ui/core/Hidden';
@@ -54,6 +64,28 @@ const Home = () => {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  const menu = [
+    {
+      id: 'Develop',
+      children: [
+        { id: 'Authentication', icon: <PeopleIcon />, active: true },
+        { id: 'Database', icon: <DnsRoundedIcon />, active: true  },
+        { id: 'Storage', icon: <PermMediaOutlinedIcon /> , active: true },
+        { id: 'Hosting', icon: <PublicIcon />, active: true  },
+        { id: 'Functions', icon: <SettingsEthernetIcon />, active: true  },
+        { id: 'ML Kit', icon: <SettingsInputComponentIcon />, active: true  },
+      ],
+    },
+    {
+      id: 'Quality',
+      children: [
+        { id: 'Analytics', icon: <SettingsIcon />, active: true  },
+        { id: 'Performance', icon: <TimerIcon />, active: true  },
+        { id: 'Test Lab', icon: <PhonelinkSetupIcon />, active: true  },
+      ],
+    },
+  ];
 
   return (
     <ThemeProvider theme={theme}>

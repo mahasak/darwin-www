@@ -24,7 +24,7 @@ const categories = [
     id: 'Develop',
     children: [
       { id: 'Authentication', icon: <PeopleIcon />, active: true },
-      { id: 'Database', icon: <DnsRoundedIcon /> },
+      { id: 'Database', icon: <DnsRoundedIcon /> , active: true },
       { id: 'Storage', icon: <PermMediaOutlinedIcon /> },
       { id: 'Hosting', icon: <PublicIcon /> },
       { id: 'Functions', icon: <SettingsEthernetIcon /> },
@@ -82,10 +82,14 @@ const styles = (theme: Theme) =>
       marginTop: theme.spacing(2),
     },
   });
+//{menu: Array<{ id: string; children: ({ id: string; icon: JSX.Element; active?: boolean; })}>}
 
-export interface NavigatorProps extends Omit<DrawerProps, 'classes'>, WithStyles<typeof styles> { }
+interface NavigatorProps extends Omit<DrawerProps, 'classes'>, WithStyles<typeof styles> { }
+export interface NavigatorWithMenuProps extends NavigatorProps {
+  menu?: Array<{ id: string; children: ({ id: string; icon: JSX.Element; active: boolean|undefined; })}>
+}
 
-function Navigator(props: NavigatorProps) {
+function Navigator(props: NavigatorWithMenuProps) {
   const { classes, ...other } = props;
 
   return (
