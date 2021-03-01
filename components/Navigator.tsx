@@ -21,14 +21,11 @@ import { Omit } from '@material-ui/types';
 
 const categories = [
   {
-    id: 'Develop',
+    id: 'Jobs API',
     children: [
-      { id: 'Authentication', icon: <PeopleIcon />, active: true },
-      { id: 'Database', icon: <DnsRoundedIcon /> , active: true },
-      { id: 'Storage', icon: <PermMediaOutlinedIcon /> },
-      { id: 'Hosting', icon: <PublicIcon /> },
-      { id: 'Functions', icon: <SettingsEthernetIcon /> },
-      { id: 'ML Kit', icon: <SettingsInputComponentIcon /> },
+      { id: 'Jobs', icon: <PeopleIcon />, active: true },
+      { id: 'Feed', icon: <DnsRoundedIcon /> , active: true },
+      { id: 'Application', icon: <PermMediaOutlinedIcon /> },
     ],
   },
   {
